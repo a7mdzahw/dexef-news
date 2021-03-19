@@ -15,7 +15,6 @@ const NewsDetailScreen = () => {
   React.useEffect(() => {
     dispatch(setCurrentCard(id));
     const card = findById(id);
-    console.log(card);
     setCard(card);
   }, [id]);
 

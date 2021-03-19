@@ -1,5 +1,6 @@
 import { current } from "@reduxjs/toolkit";
 import React from "react";
+import { Link } from "react-router-dom";
 import { find } from "../../server/db";
 
 const Carousel = () => {
@@ -30,16 +31,18 @@ const Carousel = () => {
       <div className="carousel-inner">
         {items.map((item) => (
           <div className={`carousel-item ${current === item.id && "active"}`}>
-            <img
-              src={item.urlToImage}
-              className="d-block w-100 caro-img"
-              alt={item.title}
-              style={{ maxHeight: "40vh" }}
-            />
-            <div className="carousel-caption text-light d-md-block">
-              <h5>{item.title}</h5>
-              <p className="d-none d-md-block text-sm">{item.content}</p>
-            </div>
+            <Link to={`/news/${item.id}`}>
+              <img
+                src={item.urlToImage}
+                className="d-block w-100 caro-img"
+                alt={item.title}
+                style={{ maxHeight: "40vh" }}
+              />
+              <div className="carousel-caption text-light d-md-block">
+                <h5>{item.title}</h5>
+                <p className="d-none d-md-block text-sm">{item.content}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>
