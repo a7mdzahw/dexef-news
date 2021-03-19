@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -27,6 +28,9 @@ const NewsDetailScreen = () => {
         style={{ maxHeight: "50vh", objectFit: "cover" }}
       />
       <h2 className="display-5 text-info my-3">{card.title}</h2>
+      <p className="text-primary">
+        Published At: {moment(card.publishedAt).format("MMM D YYYY, h:mm")}
+      </p>
       <p>{card.content}</p>
     </div>
   );

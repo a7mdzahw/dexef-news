@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as db from "../../server/db";
 import { recieveNews } from "../../store/news";
 import NewsCard from "../shared/NewsCard";
+import Carousel from "../shared/Carousel";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,8 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="d-flex justify-content-between mb-2">
+      <Carousel />
+      <div className="d-flex justify-content-between my-3">
         <h2 className="display-6">Recently Added</h2>
         <span>
           <button
