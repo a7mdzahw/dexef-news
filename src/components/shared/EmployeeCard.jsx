@@ -28,8 +28,8 @@ const EmployeeCard = ({ employee }) => {
         {employee.address.subAddresses.length !== 0 && (
           <div className="card-text">
             <h4>Sub Addresses</h4>
-            {employee.address.subAddresses.map((address) => (
-              <div className="d-flex gap-5">
+            {employee.address.subAddresses.map((address, i) => (
+              <div className="d-flex gap-5" key={i}>
                 <p>
                   <strong>Street: </strong>
                   {address.street}

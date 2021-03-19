@@ -27,7 +27,7 @@ const Header = () => {
             <div className="form-inline d-flex align-items-center me-1">
               <button
                 onClick={() => router.push("/api_call")}
-                className="nav-link btn  ml-auto btn-sm p-1  text-light"
+                className="nav-link btn ml-auto btn-sm p-1 text-light"
                 style={{ backgroundColor: "#28527a" }}
               >
                 Call API

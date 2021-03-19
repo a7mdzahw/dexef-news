@@ -15,7 +15,6 @@ const APICallScreen = () => {
   const get_employees = async () => {
     try {
       const { data } = await axios.get("http://185.44.64.217:27948/api/Employees/GetAllEmployees");
-      console.log(data.response);
       dispatch(recieveAPI(data));
     } catch (ex) {
       toast.error((ex.response && ex.response.data) || ex.message);
@@ -38,6 +37,23 @@ const APICallScreen = () => {
       {api.response.map((employee) => (
         <EmployeeCard key={employee.id} employee={employee} />
       ))}
+
+      <div className="d-flex gap-3">
+        {api.warnings &&
+          api.warnings.map((warn) => (
+            <div className="alert alert-warning" key={warn.description}>
+              <h3>{warn.description}</h3>
+              <p>{warn.code}</p>
+            </div>
+          ))}
+        {api.errors &&
+          api.errors.map((error) => (
+            <div className="alert alert-danger" key={error.description}>
+              <h3>{error.description}</h3>
+              <p>{error.code}</p>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

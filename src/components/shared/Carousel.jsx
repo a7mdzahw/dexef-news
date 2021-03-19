@@ -11,7 +11,6 @@ const Carousel = () => {
 
   React.useEffect(() => {
     const items = find({ count: 5 });
-    console.log(items);
     setItems(items);
   }, []);
 
@@ -26,7 +25,7 @@ const Carousel = () => {
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide-to={`${i}`}
-            className={current === item.id && "active"}
+            className={current === item.id ? `active` : ""}
             aria-current="true"
             aria-label={`slide ${i}`}
           ></button>
@@ -34,7 +33,7 @@ const Carousel = () => {
       </div>
       <div className="carousel-inner">
         {items.map((item) => (
-          <div className={`carousel-item ${current === item.id && "active"}`}>
+          <div key={item.id} className={`carousel-item ${current === item.id ? `active` : ""}`}>
             <Link className="item" to={`/news/${item.id}`}>
               <img
                 src={item.urlToImage}
