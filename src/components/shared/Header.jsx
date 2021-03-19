@@ -30,9 +30,10 @@ const Header = () => {
                 className="nav-link btn ml-auto btn-sm p-1 text-light"
                 style={{ backgroundColor: "#28527a" }}
               >
-                Call API
+                <i className="bi bi-broadcast-pin"></i> {!showSearch && "CALL API"}
               </button>
             </div>
+
             <li className="nav-item">
               <Link className="nav-link" to="/all_news">
                 <i className="bi bi-bell"></i>
