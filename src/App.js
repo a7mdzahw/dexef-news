@@ -3,11 +3,12 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/shared/Header";
+import Footer from "./components/shared/Footer";
+// Screens' Components
 import HomePage from "./components/screens/HomePage";
 import News from "./components/screens/News";
 import APICallScreen from "./components/screens/APICallScreen";
 import NewsDetailScreen from "./components/screens/NewsDetailScreen";
-import Footer from "./components/shared/Footer";
 
 const App = () => {
   return (

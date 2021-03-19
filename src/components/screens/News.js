@@ -20,12 +20,10 @@ const News = () => {
             <NewsCard item={item} />
           </div>
         ))}
-        {news.length === 0 && (
-          <div className="alert alert-warning">NO NEWS MATCHING YOUR SEARCH QUERY</div>
-        )}
       </div>
+
       {more < 24 && (
-        <div display="d-flex justify-content-center">
+        <div className="d-flex justify-content-center mt-2">
           <button className="more-btn" onClick={() => setMore((m) => m * 2)}>
             Show More
           </button>

@@ -7,8 +7,10 @@ import { searchNews } from "../../store/news";
 const Header = () => {
   const router = useHistory();
   const dispatch = useDispatch();
+
   const [query, setQuery] = React.useState("");
   const [showSearch, setShowSearch] = React.useState(false);
+
   return (
     <header>
       <nav
