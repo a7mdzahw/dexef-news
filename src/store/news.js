@@ -8,6 +8,7 @@ const newsSlice = createSlice({
     list: [],
     current_card_id: "",
     api: { response: [] },
+    showCarousel: true,
   },
   reducers: {
     recieveNews: (news, action) => {
@@ -26,9 +27,18 @@ const newsSlice = createSlice({
         item.title.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
+    toggleCarousel: (news, action) => {
+      news.showCarousel = action.payload;
+    },
   },
 });
 
-export const { recieveNews, recieveAPI, setCurrentCard, searchNews } = newsSlice.actions;
+export const {
+  recieveNews,
+  recieveAPI,
+  setCurrentCard,
+  searchNews,
+  toggleCarousel,
+} = newsSlice.actions;
 
 export default newsSlice.reducer;

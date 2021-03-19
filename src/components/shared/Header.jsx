@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
-import { searchNews } from "../../store/news";
+import { searchNews, toggleCarousel } from "../../store/news";
 
 const Header = () => {
   const router = useHistory();
@@ -39,7 +39,14 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/search" onClick={() => setShowSearch(!showSearch)}>
+              <Link
+                className="nav-link"
+                to="/search"
+                onClick={() => {
+                  setShowSearch(!showSearch);
+                  dispatch(toggleCarousel(showSearch));
+                }}
+              >
                 <i className="bi bi-search"></i>
               </Link>
             </li>
@@ -47,6 +54,7 @@ const Header = () => {
               <form className="form-inline">
                 <input
                   type="text"
+                  autoFocus
                   value={query}
                   placeholder="Search.."
                   className="form-control"

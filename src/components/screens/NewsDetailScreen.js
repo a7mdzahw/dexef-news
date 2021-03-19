@@ -26,9 +26,9 @@ const NewsDetailScreen = () => {
         className="img-fluid "
         style={{ maxHeight: "50vh", objectFit: "cover" }}
       />
-      <h2 className="display-5 text-info my-3">{card.title}</h2>
-      <p className="text-primary">
-        Published At: {moment(card.publishedAt).format("MMM D YYYY, h:mm")}
+      <h2 className="display-5 text-info my-3 fw-normal">{card.title}</h2>
+      <p className="text-primary fw-bold">
+        Published At: {moment(card.publishedAt).format("MMM Do YYYY, h:mm")}
       </p>
       <p>{card.content}</p>
     </div>

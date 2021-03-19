@@ -1,17 +1,21 @@
 import { current } from "@reduxjs/toolkit";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { find } from "../../server/db";
 
 const Carousel = () => {
   const [items, setItems] = React.useState([]);
   const [current, setCurrent] = React.useState(1);
+  const { showCarousel } = useSelector((state) => state.news);
 
   React.useEffect(() => {
     const items = find({ count: 5 });
     console.log(items);
     setItems(items);
   }, []);
+
+  if (!showCarousel) return null;
 
   return (
     <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
@@ -31,7 +35,7 @@ const Carousel = () => {
       <div className="carousel-inner">
         {items.map((item) => (
           <div className={`carousel-item ${current === item.id && "active"}`}>
-            <Link to={`/news/${item.id}`}>
+            <Link className="item" to={`/news/${item.id}`}>
               <img
                 src={item.urlToImage}
                 className="d-block w-100 caro-img"
