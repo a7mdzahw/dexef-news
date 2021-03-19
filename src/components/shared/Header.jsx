@@ -24,7 +24,7 @@ const Header = () => {
           </Link>
 
           <ul className="navbar-nav">
-            <div className="form-inline d-flex align-items-center me-4">
+            <div className="form-inline d-flex align-items-center me-1">
               <button
                 onClick={() => router.push("/api_call")}
                 className="nav-link btn  ml-auto btn-sm p-1  text-light"

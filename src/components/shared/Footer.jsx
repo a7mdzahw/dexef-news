@@ -9,7 +9,7 @@ const Footer = () => {
         <hr />
         <div className="d-flex flex-column flex-lg-row justify-content-between bottom">
           <p>&#169; Copyright SportsLive 2021. All rights reserved.</p>
-          <span className="d-flex gap-2 justify-content-between text-lignt">
+          <span className="d-flex flex-column flex-sm-row gap-2 justify-content-between text-lignt">
             <a className="footer-link" href="#">
               Career
             </a>
