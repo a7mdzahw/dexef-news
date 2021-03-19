@@ -14,7 +14,7 @@ const APICallScreen = () => {
 
   const get_employees = async () => {
     try {
-      const { data } = await axios.get("http://185.44.64.217:27948/api/Employees/GetAllEmployees");
+      const { data } = await axios.get("https://185.44.64.217:27948/api/Employees/GetAllEmployees");
       console.log(data.response);
       dispatch(recieveAPI(data));
     } catch (ex) {
