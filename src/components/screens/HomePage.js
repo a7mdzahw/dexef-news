@@ -9,7 +9,7 @@ import NewsCard from "../shared/NewsCard";
 const HomePage = () => {
   const dispatch = useDispatch();
   const router = useHistory();
-  const { filteredList: news } = useSelector((state) => state.news);
+  const { filteredList: news, loading } = useSelector((state) => state.news);
 
   React.useEffect(() => {
     const news = db.find({ count: 8 });
@@ -31,12 +31,17 @@ const HomePage = () => {
       </div>
 
       <div className="row">
+        {loading && (
+          <div className="spinner-grow">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
         {news.map((item) => (
           <div key={item.id} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <NewsCard item={item} />
           </div>
         ))}
-        {news.length === 0 && (
+        {news.length === 0 && !loading && (
           <div className="alert alert-warning">NO NEWS MATCHING YOUR SEARCH QUERY</div>
         )}
       </div>

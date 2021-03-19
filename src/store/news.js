@@ -2,13 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const newsSlice = createSlice({
   name: "news",
-  initialState: { filteredList: [], list: [], current_card_id: "", api: { response: [] } },
+  initialState: {
+    filteredList: [],
+    loading: true,
+    list: [],
+    current_card_id: "",
+    api: { response: [] },
+  },
   reducers: {
     recieveNews: (news, action) => {
       news.list = news.filteredList = action.payload;
+      news.loading = false;
     },
     recieveAPI: (news, action) => {
       news.api = action.payload;
+      news.loading = false;
     },
     setCurrentCard: (news, action) => {
       news.current_card_id = action.payload;
