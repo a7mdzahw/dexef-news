@@ -1,13 +1,54 @@
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin-top: 5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.text-sm {
+  font-size: 1rem;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.content {
+  min-height: 51vh;
+}
+
+.card-img {
+  min-height: 30vh;
+  max-height: 40vh;
+}
+
+.card-link {
+  color: black;
+  text-decoration: none;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: black;
+}
+
+.more-btn {
+  border: none;
+  background: none;
+  font-weight: bold;
+}
+
+.more-btn::after {
+  content: " -->";
+}
+
+.more-btn:hover {
+  color: blue;
 }
