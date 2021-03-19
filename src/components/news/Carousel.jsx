@@ -1,16 +1,16 @@
-import { current } from "@reduxjs/toolkit";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { find } from "../../server/db";
+
+import * as db from "../../server/db";
 
 const Carousel = () => {
   const [items, setItems] = React.useState([]);
-  const [current, setCurrent] = React.useState(1);
+  const [current] = React.useState(1);
   const { showCarousel } = useSelector((state) => state.news);
 
   React.useEffect(() => {
-    const items = find({ count: 5 });
+    const items = db.find({ count: 5 });
     setItems(items);
   }, []);
 

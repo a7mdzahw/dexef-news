@@ -3,20 +3,21 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { findById } from "../../server/db";
-import { setCurrentCard } from "../../store/news";
+import * as db from "../server/db";
+import { setCurrentCard } from "../store/news";
 
-const NewsDetailScreen = () => {
+const NewsDetail = () => {
+  // pulling id paramter from the uri
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const [card, setCard] = React.useState({});
-
+  // storing id of selected card in redux store and fetching news by id from db
   React.useEffect(() => {
     dispatch(setCurrentCard(id));
-    const card = findById(id);
+    const card = db.findById(id);
     setCard(card);
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <div className="d-flex flex-column mx-5">
@@ -35,4 +36,4 @@ const NewsDetailScreen = () => {
   );
 };
 
-export default NewsDetailScreen;
+export default NewsDetail;

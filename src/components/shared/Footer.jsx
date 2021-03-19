@@ -10,16 +10,16 @@ const Footer = () => {
         <div className="d-flex flex-column flex-lg-row justify-content-between bottom">
           <p>&#169; Copyright SportsLive 2021. All rights reserved.</p>
           <span className="d-flex flex-column flex-sm-row gap-2 justify-content-between text-lignt">
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="#1">
               Career
             </a>
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="#2">
               Contact Us
             </a>
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="#3">
               Privacy Policy
             </a>
-            <a className="footer-link" href="#">
+            <a className="footer-link" href="#4">
               Terms and Conditions
             </a>
           </span>

@@ -3,8 +3,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useSelector, useDispatch } from "react-redux";
 
-import { recieveAPI } from "../../store/news";
-import EmployeeCard from "../shared/EmployeeCard";
+import { recieveAPI } from "../store/news";
+import EmployeeCard from "../components/api/EmployeeCard";
 
 const APICallScreen = () => {
   const dispatch = useDispatch();
@@ -12,32 +12,28 @@ const APICallScreen = () => {
 
   const [loading, setLoading] = React.useState(true);
 
-  const get_employees = async () => {
-    try {
-      const { data } = await axios.get("http://185.44.64.217:27948/api/Employees/GetAllEmployees");
-      dispatch(recieveAPI(data));
-    } catch (ex) {
-      toast.error((ex.response && ex.response.data) || ex.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   React.useEffect(() => {
-    get_employees();
-  }, []);
+    // calling api endpoint to fetch employees data
+    axios
+      .get("http://185.44.64.217:27948/api/Employees/GetAllEmployees")
+      .then((res) => dispatch(recieveAPI(res.data)))
+      .catch((ex) => toast.error((ex.response && ex.response.data) || ex.message))
+      .finally(() => setLoading(false));
+  }, [dispatch]);
 
   return (
     <div className="mt-5 d-flex justify-content-center gap-2 flex-wrap">
+      {/* showing loader spinner if still fetching data */}
       {loading && (
         <div className="spinner-grow">
           <span className="visually-hidden">Loading...</span>
         </div>
       )}
+      {/* showing each employee data after fetching */}
       {api.response.map((employee) => (
         <EmployeeCard key={employee.id} employee={employee} />
       ))}
-
+      {/* showing warnings and errors if response contains some */}
       <div className="d-flex gap-3">
         {api.warnings &&
           api.warnings.map((warn) => (
@@ -59,3 +55,16 @@ const APICallScreen = () => {
 };
 
 export default APICallScreen;
+
+// another way of calling the api
+/* const get_employees = async () => {
+    try {
+      const { data } = await axios.get("http://185.44.64.217:27948/api/Employees/GetAllEmployees");
+      dispatch(recieveAPI(data));
+    } catch (ex) {
+      // showing error notifcation on error calling api
+      toast.error((ex.response && ex.response.data) || ex.message);
+    } finally {
+      setLoading(false);
+    }
+  }; */

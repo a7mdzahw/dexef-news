@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
 import { searchNews, toggleCarousel } from "../../store/news";
@@ -9,21 +9,24 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [query, setQuery] = React.useState("");
-  const [showSearch, setShowSearch] = React.useState(false);
-
+  const { showSearch } = useSelector((state) => state.news);
   return (
     <header>
+      {/* navbar */}
       <nav
         className="navbar navbar-expand  navbar-dark fixed-top"
         style={{ backgroundColor: "#301b3f" }}
       >
         <div className="container ">
+          {/* navbar logo */}
           <Link className=" navbar-brand gap-2 p-0" to="/">
             <i className="bi bi-newspaper"></i>
             {"  "}Sports Life
           </Link>
 
+          {/* navbar navigation icons */}
           <ul className="navbar-nav">
+            {/* call api button */}
             <div className="form-inline d-flex align-items-center me-1">
               <button
                 onClick={() => router.push("/api_call")}
@@ -33,7 +36,7 @@ const Header = () => {
                 <i className="bi bi-broadcast-pin"></i> {!showSearch && "CALL API"}
               </button>
             </div>
-
+            {/* navbar links */}
             <li className="nav-item">
               <Link className="nav-link" to="/all_news">
                 <i className="bi bi-bell"></i>
@@ -44,13 +47,13 @@ const Header = () => {
                 className="nav-link"
                 to="/search"
                 onClick={() => {
-                  setShowSearch(!showSearch);
-                  dispatch(toggleCarousel(showSearch));
+                  dispatch(toggleCarousel());
                 }}
               >
                 <i className="bi bi-search"></i>
               </Link>
             </li>
+            {/* search form */}
             {showSearch && (
               <form className="form-inline">
                 <input

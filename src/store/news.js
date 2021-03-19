@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// creating news slice in redux store
 const newsSlice = createSlice({
   name: "news",
   initialState: {
@@ -9,7 +10,9 @@ const newsSlice = createSlice({
     current_card_id: "",
     api: { response: [] },
     showCarousel: true,
+    showSearch: false,
   },
+  // actions creators and reducer made by "@reduxjs/toolkit"
   reducers: {
     recieveNews: (news, action) => {
       news.list = news.filteredList = action.payload;
@@ -28,11 +31,13 @@ const newsSlice = createSlice({
       );
     },
     toggleCarousel: (news, action) => {
-      news.showCarousel = action.payload;
+      news.showCarousel = !news.showCarousel;
+      news.showSearch = !news.showSearch;
     },
   },
 });
 
+// exporting actions creators
 export const {
   recieveNews,
   recieveAPI,
@@ -41,4 +46,5 @@ export const {
   toggleCarousel,
 } = newsSlice.actions;
 
+// exporting default reducer
 export default newsSlice.reducer;
