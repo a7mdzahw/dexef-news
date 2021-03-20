@@ -17,20 +17,20 @@ const Header = () => {
         className="navbar navbar-expand  navbar-dark fixed-top"
         style={{ backgroundColor: "#301b3f" }}
       >
+        <div className="navbar-brand-wrapper"></div>
         <div className="container ">
           {/* navbar logo */}
-          <Link className=" navbar-brand gap-2 p-0" to="/">
+          <Link className=" navbar-brand gap-2 text-dark fw-bolder p-0" to="/">
             <i className="bi bi-newspaper"></i>
             {"  "}Sports Life
           </Link>
-
           {/* navbar navigation icons */}
           <ul className="navbar-nav">
             {/* call api button */}
             <div className="form-inline d-flex align-items-center me-1">
               <button
                 onClick={() => router.push("/api_call")}
-                className="nav-link btn ml-auto btn-sm p-1 text-light"
+                className="nav-link btn ml-auto btn-sm p-1 text-light fw-bold"
                 style={{ backgroundColor: "#28527a" }}
               >
                 <i className="bi bi-broadcast-pin"></i> {!showSearch && "CALL API"}

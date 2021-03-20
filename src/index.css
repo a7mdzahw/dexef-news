@@ -6,6 +6,22 @@ body {
   margin-top: 5rem;
 }
 
+/* header */
+.navbar-brand-wrapper {
+  position: absolute;
+  z-index: 1;
+  width: 42vw;
+  height: 100%;
+  margin: 0;
+  background-color: rgb(170, 170, 187);
+  transform: translate(-5vw, 0) skewX(-40deg);
+  box-shadow: 5px 0 10px black;
+}
+.navbar-brand {
+  z-index: 2;
+}
+
+/* utils */
 .text-sm {
   font-size: 1rem;
   font-weight: bold;
@@ -18,6 +34,7 @@ body {
   min-height: 51vh;
 }
 
+/* news card */
 .card-img {
   min-height: 30vh;
   max-height: 40vh;
@@ -28,6 +45,7 @@ body {
   text-decoration: none;
 }
 
+/* footer */
 .footer {
   margin-top: auto;
 }
@@ -41,6 +59,7 @@ body {
   color: black;
 }
 
+/* buttons */
 .more-btn {
   border: none;
   background: none;

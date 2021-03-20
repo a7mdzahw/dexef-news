@@ -33,6 +33,7 @@ const newsSlice = createSlice({
     toggleCarousel: (news, action) => {
       news.showCarousel = !news.showCarousel;
       news.showSearch = !news.showSearch;
+      news.filteredList = news.list;
     },
   },
 });
