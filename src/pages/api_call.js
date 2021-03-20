@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { recieveAPI } from "../store/news";
 import EmployeeCard from "../components/api/EmployeeCard";
+import EmployeeSkeleton from "../components/skeletons/EmployeeSkeleton";
+import Skeleton from "react-loading-skeleton";
 
 const APICallScreen = () => {
   const dispatch = useDispatch();
@@ -22,35 +24,39 @@ const APICallScreen = () => {
   }, [dispatch]);
 
   return (
-    <div className="mt-5 d-flex justify-content-center gap-2 flex-wrap">
-      {/* showing loader spinner if still fetching data */}
-      {loading && (
-        <div className="spinner-grow">
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      )}
-      {/* showing each employee data after fetching */}
-      {api.response.map((employee) => (
-        <EmployeeCard key={employee.id} employee={employee} />
-      ))}
+    <>
       {/* showing warnings and errors if response contains some */}
-      <div className="d-flex gap-3">
+      <div className="d-flex justify-content-around gap-3 mb-0">
         {api.warnings &&
           api.warnings.map((warn) => (
-            <div className="alert alert-warning" key={warn.description}>
+            <div className="alert alert-warning w-50" key={warn.description}>
               <h3>{warn.description}</h3>
-              <p>{warn.code}</p>
+              <p>Code: {warn.code}</p>
             </div>
           ))}
         {api.errors &&
           api.errors.map((error) => (
-            <div className="alert alert-danger" key={error.description}>
+            <div className="alert alert-danger w-50" key={error.description}>
               <h3>{error.description}</h3>
-              <p>{error.code}</p>
+              <p>Code: {error.code}</p>
             </div>
           ))}
       </div>
-    </div>
+
+      {loading ? (
+        <Skeleton width="30vw" height="20px" />
+      ) : (
+        <h2 className="fw-bolder ms-3">Employees</h2>
+      )}
+
+      <div className="d-flex justify-content-start flex-wrap">
+        {/* showing loader spinner if still fetching data */}
+        {loading
+          ? [1, 2, 3, 4].map((n) => <EmployeeSkeleton style={{ width: "50%" }} key={n} />)
+          : // showing each employee data after fetching
+            api.response.map((employee) => <EmployeeCard key={employee.id} employee={employee} />)}
+      </div>
+    </>
   );
 };
 

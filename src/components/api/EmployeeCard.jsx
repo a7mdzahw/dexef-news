@@ -1,50 +1,59 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 const EmployeeCard = ({ employee }) => {
   return (
-    <div className="card" style={{ width: "75%" }}>
+    <div className="card" style={{ minWidth: "47%", margin: "1rem" }}>
       <div className="card-body">
-        <div className="card-title d-flex justify-content-between gap-3">
-          <h2 className="display-6">{employee.name}</h2>
-          <span className="alert alert-success p-1">{employee.deparment} Deparment</span>
+        <div className="card-title d-flex align-items-center justify-content-between gap-3">
+          <div className="d-flex gap-2 align-items-center">
+            <Skeleton circle width="50px" height="50px" />
+            <h2 className="fw-bold p-0">{employee.name}</h2>
+          </div>
+          <span className="alert alert-success m-0 fw-bold ">{employee.deparment}</span>
         </div>
         <div className="card-text">
-          <h3>Address</h3>
-          <div className="d-flex gap-5">
-            <p>
-              <strong>Street: </strong>
-              {employee.address.street}
-            </p>
-            <p>
-              <strong>City: </strong>
-              {employee.address.city}
-            </p>
-            <p>
-              <strong>Country: </strong>
-              {employee.address.country}
-            </p>
-          </div>
+          <h4>Address</h4>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Street</th>
+                <th>City</th>
+                <th>Country</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{employee.address.street}</td>
+                <td>{employee.address.city}</td>
+                <td>{employee.address.country}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         {employee.address.subAddresses.length !== 0 && (
-          <div className="card-text">
-            <h4>Sub Addresses</h4>
-            {employee.address.subAddresses.map((address, i) => (
-              <div className="d-flex gap-5" key={i}>
-                <p>
-                  <strong>Street: </strong>
-                  {address.street}
-                </p>
-                <p>
-                  <strong>City: </strong>
-                  {address.city}
-                </p>
-                <p>
-                  <strong>Country: </strong>
-                  {address.country}
-                </p>
-              </div>
-            ))}
-          </div>
+          <>
+            <h5>Sub Addresses</h5>
+
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Street</th>
+                  <th>City</th>
+                  <th>Country</th>
+                </tr>
+              </thead>
+              <tbody>
+                {employee.address.subAddresses.map((address, i) => (
+                  <tr key={i}>
+                    <td>{address.street}</td>
+                    <td>{address.city}</td>
+                    <td>{address.country}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         )}
       </div>
     </div>
